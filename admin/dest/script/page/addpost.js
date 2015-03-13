@@ -1,0 +1,1 @@
+$(function(){$('[data-toggle="tooltip"]').tooltip();var t,i=$(window).height()-155;window.UMEDITOR_CONFIG.initialFrameHeight=i,t=UM.getEditor("myEditor")});

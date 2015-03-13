@@ -1,0 +1,123 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+.admin-panel{
+	width: 100%;
+	height: 100%;
+	.slidebar{
+		float: left;
+		width: 220px;
+		height: 100%;
+		border-right: 1px solid #EBEBEB;
+		background-color: #F7F7F7;
+		.logo{
+			height: 160px;
+			border-bottom: 1px solid #EBEBEB;
+			a{
+				display: inline-block;
+				width: 120px;
+				height: 120px;
+				margin: 20px 0 0 50px;
+			}
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			li{
+				list-style-type: none;
+				margin: 0;
+				position: relative;
+			}
+		} 
+		ul.slide-nav>li>a{
+			/* color: #8C8C8C; */
+			color: #666;
+			display: block;
+			font-size: 16px;
+			text-decoration: none;
+			font-weight: 500;
+			padding: 10px 20px;
+			box-sizing:border-box;
+			border-bottom: 1px solid #EBEBEB;
+			box-shadow:inset 0 1px 0 #fff;
+			text-transform: capitalize;
+			 -webkit-transition: all .2s ease-in-out;
+			-o-transition: all .2s ease-in-out;
+			transition: all .2s ease-in-out; 
+		}
+		ul.slide-nav>li>a:hover,
+		ul.slide-nav>li>a.current{
+			// color: #333;
+			color: #563d7c;
+			background-color: #FFF;
+			box-shadow: 1px 0 0 rgb(255,255,255),inset 5px 0 0 -1px rgb(234,83,63);
+			outline: 0 none;
+		}
+		ul.slide-nav>li>a.current{
+			border: 0 none;
+		}
+
+		ul.slide-nav>li>a>span.glyphicon{
+			position: absolute;
+			right: 20px;
+			top: 13px;
+			color: #666;
+		}
+
+		.sub-nav{
+			display: none;
+			font-size: 14px;
+			background-color: #fff;
+			a{
+				color: #767676;
+				display: block;
+				padding: 6px 35px;
+			}
+			a:hover{
+				color: #563d7c;
+				text-decoration: none;
+				background-color: #f7f7f7;
+			}
+		}
+	}
+
+	.main{
+		padding-left: 220px;
+		height: 100%;
+		background-color: #FFF;
+		ul.topbar{
+			border-bottom: 1px solid #EBEBEB;
+			margin: 0;
+			padding: 0;
+			height: 50px;
+			li{
+				float: right;
+				list-style: none;
+				a{
+					color: #666;
+					font-size: 18px;
+					display: block;
+					line-height: 50px;
+					width: 50px;
+					text-align: center;
+					text-decoration: none;
+					border-left: 1px solid #EBEBEB;/* 
+					-webkit-transition: all .2s ease-in-out;
+					-o-transition: all .2s ease-in-out;
+					transition: all .2s ease-in-out; */
+				}
+				a:hover{
+					background-color: #F7F7F7;
+				}
+			}
+			li:first-child{
+				float: left;
+				a{
+					border: none;
+					border-right: 1px solid #EBEBEB;
+				}
+			}
+		}
+	}
+}
