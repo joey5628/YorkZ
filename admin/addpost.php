@@ -30,13 +30,51 @@
 					<div class="post-right">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">发布</h3>
+								<h3 class="panel-title">发布设置</h3>
 							</div>
 							<div class="panel-body">
-								<div>
-									<button class="btn btn-default btn-sm" type="button">保存草稿</button>
-									<button class="btn btn-default btn-sm" type="button">预览</button>
-								</div>
+								<form>
+									<div class="form-group">
+										<button id="saveBtn" class="btn btn-default btn-sm" type="button">保存草稿</button>
+										<button id="previewBtn" class="btn btn-default btn-sm pull-right" type="button">预览</button>
+									</div>
+									<div class="form-group">
+										<label for="openStatus">公开状态：</label>
+										<select id="openStatus">
+											<option value="publish">公开</option>
+											<option value="private">私密</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="postClass">分类目录：</label>
+										<select id="postClass">
+											<option value="0">未分类</option>
+											<option value="1">Git</option>
+											<option value="2">JavaScript</option>
+											<option value="3">Css</option>
+											<option value="4">Html</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="postClass">添加标签：</label>
+										<div class="input-group">
+									     	<input type="text" class="form-control input-sm" placeholder="添加标签">								      
+									      	<span class="input-group-btn">
+									      		<button class="btn btn-default btn-sm" type="button">添加</button>
+									      	</span>
+								      	</div>
+								      	<div class="tag-list">
+											<span class="tag-item">
+												<button type="button" class="close">&times;</button>
+												地图
+											</span>								      		
+								      	</div>
+									</div>
+									<div class="submit-group form-group">
+										<button id="publishBtn" type="submit" class="btn btn-primary">发布</button>
+										<button id="deletionBtn" type="button" class="btn btn-link btn-sm pull-right">移至回收站</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>	
