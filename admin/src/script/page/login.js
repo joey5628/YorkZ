@@ -35,7 +35,6 @@ function doLogin(){
 	$btn.button('loading');
 
 	$.post('login.php', {'username': $username.val(), 'password': $password.val()}, function(data){
-		console.log(data);
 		$btn.button('reset');
 		if(data == 0){
 			$alert.text('用户名或密码错误！').slideDown(200);

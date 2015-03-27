@@ -11,12 +11,12 @@
 				<span class="glyphicon glyphicon-file"></span>
 			</a>
 			<ul class="sub-nav">
-				<li><a href="#">撰写文章</a></li>
-				<li><a href="#">所有文章</a></li>
+				<li><a href="addpost.php">撰写文章</a></li>
+				<li><a href="editpost.php">所有文章</a></li>
 			</ul>
 		</li>
 		<li>
-			<a href="">类别<span class="glyphicon glyphicon-list"></span></a>
+			<a href="editterm.php">类别<span class="glyphicon glyphicon-list"></span></a>
 		</li>
 		<li>
 			<a href="">标签<span class="glyphicon glyphicon-tags"></span></a>
@@ -25,7 +25,7 @@
 			<a href="">评论<span class="glyphicon glyphicon-comment"></span></a>
 		</li>
 		<li>
-			<a href="">用户<span class="glyphicon glyphicon-user"></span></a>
+			<a href="user.php">用户<span class="glyphicon glyphicon-user"></span></a>
 		</li>
 	</ul>
 </div>

@@ -1,18 +1,20 @@
 <?php include('common/config.php');  ?>
 <?php
 	if($_POST){
-		$name = $_POST['username'];
+		$login = $_POST['username'];
 		$pwd = $_POST['password'];
 		$data = 0;
-		if($name && $pwd){
+		if($login && $pwd){
 			try{
-
-				$db = new PDO('mysql:host='. DB_HOST .';dbname='. DB_DBNAME, DB_USER, DB_PASS);
-				$db->query("set character set 'utf8'");
-				$sql = "select * from user where login='$name' and pass='$pwd'";
+				$pwd = md5($pwd . LOGIN_TEXT);
+				$db = getDBConnect();
+				$sql = "select * from user where login='$login' and pass='$pwd'";
 				$result = $db->query($sql);
 				$info = $result->fetch(PDO::FETCH_ASSOC);
+
 				if($info){
+					$user = $login . '|' . $pwd;
+					setcookie("user", $user, time()+3600);
 					$data = 1;
 					//header('location:index.php');
 				}else{

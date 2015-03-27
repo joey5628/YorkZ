@@ -1,6 +1,6 @@
 <ul class="topbar clearfix">
 	<li>
-		<a href="#" data-toggle="tooltip" data-placement="right" data-original-title="新建文章" data-trigger="hover">
+		<a href="addpost.php" data-toggle="tooltip" data-placement="right" data-original-title="新建文章" data-trigger="hover">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		</a>
 	</li>

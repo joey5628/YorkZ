@@ -1,4 +1,7 @@
 <?php include('common/config.php'); ?>
+<?php
+	//echo md5('wd8380925yi.zYorkZ2015-03-19');
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>

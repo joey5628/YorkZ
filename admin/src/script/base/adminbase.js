@@ -14,4 +14,6 @@ $(function(){
     	}
     	$this.siblings('.sub-nav').slideToggle('fast');
     });
+        
+    $('[data-toggle="tooltip"]').tooltip();
 });
