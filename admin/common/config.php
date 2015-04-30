@@ -1,7 +1,11 @@
 <?php
 	
 	ob_start();
-	define('RESOURCE', 'http://localhost:8080/yorkz/admin/');
+	$res = 'http://localhost:80/yorkz/admin/';
+	if(strpos($_SERVER["HTTP_USER_AGENT"],"Windows")){
+		$res = 'http://localhost:8080/yorkz/admin/';
+	}
+	define('RESOURCE', $res);
 	define('LOGIN_TEXT', 'yi.zYorkZ2015-03-19');
 	/*define('DB_HOST', 'localhost');
 	define('DB_DBNAME', 'db_demo');
