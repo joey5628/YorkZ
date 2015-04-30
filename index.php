@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>YI.Z</title>
-</head>
-<body>
-	yi
-</body>
-</html>
+<?php 
+	header('location:content/index.php');
+?>
