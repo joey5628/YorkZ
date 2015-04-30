@@ -5,6 +5,6 @@
 	<title>YI.Z</title>
 </head>
 <body>
-	
+	yi
 </body>
 </html>
