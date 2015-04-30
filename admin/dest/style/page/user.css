@@ -1,1 +1,1 @@
-.form{width:40%}.form .form-group .control-label{text-align:left;width:15%;vertical-align:top}.form .form-group .form-control{display:inline-block;width:75%}.form .form-group .pass-box{width:75%;display:inline-block}.form .form-group .pass-box input[type=password]{margin-bottom:5px}
+.form .form-group .form-control,.form .form-group .pass-box{width:75%;display:inline-block}.form{width:40%}.form .form-group .control-label{text-align:left;width:15%;vertical-align:top}.form .form-group .pass-box input[type=password]{margin-bottom:5px}

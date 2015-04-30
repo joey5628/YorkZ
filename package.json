@@ -1,7 +1,6 @@
 {
   "name": "YorkZ",
   "version": "0.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "gulp": "~3.8.11"
@@ -20,5 +19,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yi.z",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyi5628/YorkZ.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhangyi5628/YorkZ/issues"
+  },
+  "homepage": "https://github.com/zhangyi5628/YorkZ"
 }
