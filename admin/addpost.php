@@ -10,6 +10,22 @@
 	<?php $fed->addEditorCss(); ?>
 </head>
 <body>
+	<?php 
+		$id = 0;
+		$info = '';
+		if($_GET && $_GET['postId']){
+			$id = $_GET['postId'];
+			try{	
+				$db = getDBConnect();
+				$sql = "select * from posts where id=$id";
+				$result = $db->query($sql);
+				$info = $result->fetch(PDO::FETCH_ASSOC);
+
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+	?>
 	<div class="admin-panel">
 		<?php include('_slidebar.php'); ?>
 		<div class="main">
@@ -20,12 +36,13 @@
 				</h3>
 				<div class="post-box clearfix">
 					<div class="post-content">
-						<input type="hidden" id="postId" value="0">
+						<input type="hidden" id="postId" value="<?php echo $id;?>">
 						<div class="form-group">
-							<input type="text" id="title" class="form-control" placeholder="文章标题"/>
+							<input type="text" id="title" class="form-control" placeholder="文章标题" value="<?php echo $info == '' ? '' : $info['title'] ;?>" />
 						</div>
 						<div class="form-group">
 							<script type="text/plain" id="myEditor" style="width: 100%; height:300px;">
+							<?php echo $info == '' ? '' : $info['content']; ?>
 							</script>
 						</div>
 					</div>
@@ -43,8 +60,8 @@
 									<div class="form-group">
 										<label for="displayStatus">公开状态：</label>
 										<select id="displayStatus">
-											<option value="1">公开</option>
-											<option value="0">私密</option>
+											<option value="1" <?php echo $info != '' && $info['display'] == 1 ? 'selected' : ''?>>公开</option>
+											<option value="0" <?php echo $info != '' && $info['display'] == 0 ? 'selected' : ''?>>私密</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -52,8 +69,13 @@
 										<select id="postTerm">
 											<?php
 												$result = getTerms();
+												$curTerm = $info == '' ? '' : $info['term'];
 												foreach ($result as $row) {
-													echo "<option value=". $row['id'] .">". $row['term_name'] ."</option>";
+													if($curTerm == $row['id']){
+														echo "<option value=". $row['id'] ." selected>". $row['term_name'] ."</option>";
+													}else{
+														echo "<option value=". $row['id'] .">". $row['term_name'] ."</option>";
+													}
 												}
 											?>
 										</select>

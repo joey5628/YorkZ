@@ -136,10 +136,12 @@ html,body{
 select{
 	height: 26px;
 }
-.btn-recycle{
+.btn-recycle,
+.btn-delete{
 	color: #c7254e;
 }
-.btn-recycle:hover{
+.btn-recycle:hover,
+.btn-delete:hover{
 	color: #c7254e;
 }
 .table{
@@ -161,4 +163,32 @@ select{
 			}
 		}
 	}
+}
+#alertBackdrop{
+	display: none;
+	height: 100%; 
+	z-index: 1000;
+}
+#alert .alert{
+	width: 300px;
+	margin: 100px auto;
+	-webkit-transition: -webkit-transform .3s ease-out;
+  	-o-transition: -o-transform .3s ease-out;
+  	transition: transform .3s ease-out;
+  	-webkit-transform: translate(0,-55%);
+  	-ms-transform: translate(0,-25%);
+  	-o-transform: translate(0,-25%);
+  	transform: translate(0,-55%);
+}
+#alert.in .alert{
+	-webkit-transform: translate(0,0);
+  	-ms-transform: translate(0,0);
+  	-o-transform: translate(0,0);
+  	transform: translate(0,0);
+}
+#alert .btn-area{
+	text-align: right;
+}
+#alert .btn-area .btn{
+	display: none;
 }
