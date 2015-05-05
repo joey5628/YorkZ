@@ -1,3 +1,51 @@
 body{
-	font-size: 12px;
+	background-color: #ededef;
+	font-family: Microsoft YaHei,Hiragino Sans GB;
+}
+h1, h2, h3, h4, h5, h6, em {
+  font-size: 100%;
+  font-weight: normal;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+.container,
+.site-header,
+.site-footer{
+	width: 980px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+.container{
+	margin-top: 140px;
+}
+.site-header{
+	position: fixed;
+	border-bottom: 1px solid #454545;
+	background: #3a3a3a;
+	left: 50%;
+	top: 0;
+	margin: 0 0 0 -490px;
+	height: 100px; 
+	padding: 20px;
+	.header-box{
+		position: relative;
+		text-align: center;
+		.header-pic{
+			width: 100px;
+			height: 100px;
+			border-radius: 50px;
+			position: absolute;
+			left: 0px;
+		}
+		h1 a{
+			color: #fff;
+			font-size: 20px;
+			display: inline-block;
+			text-decoration: none;
+		}
+	}
+
 }
