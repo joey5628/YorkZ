@@ -10,42 +10,84 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 	margin: 0;
 	padding: 0;
 }
+a{
+	color: #00a7e1;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+//清除浮动
+.clearfix{
+  &:before,
+  &:after {
+    content: " "; 
+    display: table; 
+  }
+  &:after {
+    clear: both;
+  }
+}
 
-.container,
-.site-header,
-.site-footer{
-	width: 980px;
-	margin: 0 auto;
-	background-color: #fff;
-}
 .container{
-	margin-top: 140px;
+	width: 980px;
+	margin: 20px auto 40px;
+	background-color: #fff;
+	height: 900px;
 }
-.site-header{
-	position: fixed;
+.header{
+	width: 100%;
+}
+.header{
 	border-bottom: 1px solid #454545;
 	background: #3a3a3a;
-	left: 50%;
-	top: 0;
-	margin: 0 0 0 -490px;
-	height: 100px; 
-	.header-box{
-		position: relative;
-		text-align: center;
-		margin: 20px;
-		.header-pic{
-			width: 100px;
-			height: 100px;
-			border-radius: 50px;
-			position: absolute;
-			left: 0px;
-		}
-		h1 a{
-			color: #fff;
-			font-size: 20px;
-			display: inline-block;
-			text-decoration: none;
+	.inner{
+		max-width: 980px;
+		width: 100%;
+		margin: 0 auto;
+		.logo{
+			display: block;
+			text-align: center;
+			padding: 20px 0;
+			font-family: 'Handlee',"华文行楷","Microsoft Yahei",arial,sans-serif;
+			font-weight: 100;
+			a{
+				text-decoration: none;
+			}
+			a:hover{
+				text-decoration: none;
+			}
+			.logo-img{
+				display: inline-block;
+				width: 80px;
+				height: 80px;
+				margin-right: 20px;
+				vertical-align: middle;
+				.border-radius(100%);
+				.transition(all, ease, 1s);
+			}
+			.logo-img:hover{
+				.rotate(360deg);
+			}
+			.logo-name,
+			.logo-description{
+				display: inline-block;
+				color: #fff;
+			}
 		}
 	}
-
+}
+.footer{
+	padding: 20px 0;
+	border-top: 1px solid #e5e5e5;
+	.inner{
+		max-width: 980px;
+		width: 100%;
+		margin: 0 auto;
+		.footer-info{
+			text-align: center;
+			font-size: 14px;
+			
+		}
+	}
 }

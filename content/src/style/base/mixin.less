@@ -1,0 +1,25 @@
+
+
+//圆角
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+//Transformations/2D
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+  -moz-transform: rotate(@degrees);
+  -o-transform: rotate(@degrees);
+  transform: rotate(@degrees);
+}
+
+//Transitions
+.transition(@property; @function; @duration; @delay:0s) {
+  -webkit-transition: @property @function @duration @delay;
+  -moz-transition: @property @function @duration @delay;
+  -o-transition: @property @function @duration @delay;
+  transition: @property @function @duration @delay;
+}
