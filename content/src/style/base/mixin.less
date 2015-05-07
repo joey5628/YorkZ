@@ -1,4 +1,14 @@
-
+//清除浮动
+.clearfix(){
+  &:before,
+  &:after {
+    content: " "; 
+    display: table; 
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 //圆角
 .border-radius(@radius) {
@@ -22,4 +32,12 @@
   -moz-transition: @property @function @duration @delay;
   -o-transition: @property @function @duration @delay;
   transition: @property @function @duration @delay;
+}
+
+//box阴影
+.box_shadow(@x; @y; @r; @color) {
+  -webkit-box-shadow: @x, @y, @r, @color;
+  -moz-box-shadow: @x, @y, @r, @color;
+  -o-box-shadow: @x, @y, @r, @color;
+  box-shadow: @x @y @r @color;
 }

@@ -1,6 +1,8 @@
+/* 全站公用 */
 body{
 	background-color: #ededef;
-	font-family: Microsoft YaHei,Hiragino Sans GB;
+	font: 14px Microsoft YaHei,Hiragino Sans GB;
+	color: #565656;
 }
 h1, h2, h3, h4, h5, h6, em {
 	font-size: 100%;
@@ -10,13 +12,36 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 	margin: 0;
 	padding: 0;
 }
+ul,
+ol{
+	list-style: none;
+}
 a{
 	color: #00a7e1;
 	text-decoration: none;
 }
 a:hover{
-	text-decoration: underline;
+	color: #00a7e1;
+	text-decoration: none;
 }
+// nav
+.nav{
+	list-style: none;
+	li{
+		position: relative;
+		display: block;
+		a{
+			display: block;
+		}
+	}
+}
+// nav-pills
+.nav-pills{
+	li{
+		float: left;
+	}
+}
+
 //清除浮动
 .clearfix{
   &:before,
@@ -28,18 +53,11 @@ a:hover{
     clear: both;
   }
 }
-
-.container{
-	width: 980px;
-	margin: 20px auto 40px;
-	background-color: #fff;
-	height: 900px;
-}
 .header{
 	width: 100%;
 }
 .header{
-	border-bottom: 1px solid #454545;
+	//border-bottom: 1px solid #454545;
 	background: #3a3a3a;
 	.inner{
 		max-width: 980px;
@@ -76,10 +94,77 @@ a:hover{
 			}
 		}
 	}
+	.outer{
+		width: 100%;
+		border-top: 1px solid #fff;
+		.navbar{
+			position: relative;
+			.clearfix();
+			.nav{
+				a{
+					padding: 12px 15px;
+					color: #fff;
+					text-decoration: none;
+					font-size: 14px;
+					.transition(color, ease, .2s);
+					span{
+						margin-left: 5px;
+						font-size: 10px;
+						color: #999;
+					}
+				}
+				a:hover{
+					color: #00a7e1;
+				}
+			}
+			.search-box{
+				position: absolute;
+				right: 0px;
+				top: 12px;
+				a{
+					font-size: 16px;
+					visibility: visible;
+					.transition(all, ease, .5s);
+				}
+				a.hidden{
+					visibility: hidden;
+				}
+				.glyphicon{
+					color:#fff;
+				}
+				.search-form{
+					position: absolute;
+					right: 0;
+					top: -3px;
+					visibility: visible;
+					border: 1px solid #fff;
+					.transition(all, ease, .3s);
+					input{
+						color: #fff;
+						background: #3a3a3a;
+						border: 0 none;
+						padding: 2px;
+						outline: 0 none;
+						opacity: 1;
+						width: 120px;
+						line-height: 20px;
+						.transition(all, ease, .5s);
+					}
+				}
+				.search-form.form-hidden{
+					visibility: hidden;
+					input{
+						opacity: 0;
+						width: 0;
+					}
+				}
+			}
+		}
+	}
 }
 .footer{
 	padding: 20px 0;
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #dcdcdc;
 	.inner{
 		max-width: 980px;
 		width: 100%;
@@ -91,3 +176,97 @@ a:hover{
 		}
 	}
 }
+
+
+/* container */
+.container{
+	width: 980px;
+	margin: 20px auto 40px;
+	.clearfix();
+	.wrap{
+		width: 100%;
+		float: left;
+		.main{
+			margin-right: 290px;
+		}
+	}
+	.sidebar{
+		float: right;
+		margin-left: -290px;
+		width: 270px;
+		background: #fff;
+	}
+}
+.article{
+	margin: 0  0 30px 0;
+	background:#fff;
+	padding: 20px;
+	.box_shadow(0px, 1px, 2px, rgba(0,0,0,0.08));
+	.article-title{
+		color: #565656;
+		display: block;
+		text-decoration: none;
+		font-size: 24px;
+		margin-bottom: 14px;
+		.transition(all, ease, .2s);
+	}
+	.article-title:hover{
+		color: #00a7e1;
+	}
+
+	.article-meta{
+		.clearfix();
+		.article-date,
+		.article-category{
+			color: #565656;
+			float: left;
+			font-size: 14px;
+			margin-right: 10px;
+			a{
+				color: #565656;
+			}
+			a:hover{
+				color: #00a7e1;
+			}
+		}
+	}
+	.article-body{
+		line-height: 22px;
+		p{
+			margin: 22px 0;
+		}
+	}
+	.article-footer{
+		border-top: 1px solid #eceff2;
+		font-size: 12px;
+		line-height: 20px;
+		padding-top: 20px;
+		.clearfix();
+		a{
+			color: #999;
+			&:hover{
+				color: #666;
+			}
+		}
+		.article-share-link,
+		.article-comment-link{
+			margin-left: 20px;
+			float: right;
+		}
+		.article-tag-link{
+			.clearfix();
+			li{
+				float: left;
+				margin-right: 10px;
+				a{
+					&:before{
+						content: '#';
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
