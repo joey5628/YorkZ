@@ -86,6 +86,9 @@
 							评论
 						</a>
 						<ul class="article-tag-link">
+							<!-- <li>
+								<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+							</li> -->
 							<li>
 								<a href="#">Javascript</a>
 							</li>
@@ -99,6 +102,44 @@
 					</footer>
 				</article>
 				<?php endfor?>
+				<!-- <nav class="pager">
+					<a href="#" class="extend prev">Prev</a>
+					<a href="#" class="page-number">1</a>
+					<span class="page-number current">2</span>
+					<a href="#" class="page-number">3</a>
+					<a href="#" class="page-number">4</a>
+					<span class="space">...</span>
+					<a href="#" class="page-number">10</a>
+					<a href="#" class="extend prev">Next</a>
+				</nav> -->
+				<nav>
+					<ul class="pager">
+						<li>
+							<a href="#" class="prev">Prev</a>
+						</li>
+						<li>
+							<a href="">1</a>
+						</li>
+						<li class="current">
+							<a href="">2</a>
+						</li>
+						<li>
+							<a href="">3</a>
+						</li>
+						<li>
+							<a href="">4</a>
+						</li>
+						<li>
+							<span>...</span>
+						</li>
+						<li>
+							<a href="">30</a>
+						</li>
+						<li>
+							<a href="" class="next">Next</a>
+						</li>
+					</ul>
+				</nav>
 			</section>
 		</div>
 		<aside class="sidebar">
