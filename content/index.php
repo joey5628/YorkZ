@@ -143,7 +143,21 @@
 			</section>
 		</div>
 		<aside class="sidebar">
-			sidebar
+			<div class="profile">
+				<div class="base-info">
+					<img src="../img/sun.jpg" alt="" class="logo-img">
+					<h2 class="author-name">岸林风</h2>
+					<h3 class="author-job">前端工程师</h3>
+					<div class="author-location">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+						上海 - 松江
+					</div>
+				</div>
+				<div class="article-info">
+					
+				</div>
+				<div class="contact-info"></div>
+			</div>
 		</aside>
 	</div>
 	<footer class="footer">
