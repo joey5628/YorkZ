@@ -63,38 +63,60 @@ a:hover{
 		max-width: 980px;
 		width: 100%;
 		margin: 0 auto;
-		.logo{
+		.base-info-outer{
 			display: block;
 			text-align: center;
 			padding: 20px 0;
-			font-family: 'Handlee',"华文行楷","Microsoft Yahei",arial,sans-serif;
-			font-weight: 100;
-			a{
-				text-decoration: none;
-			}
-			a:hover{
-				text-decoration: none;
-			}
-			.logo-img{
+			.base-info{
+				font-family: 'Handlee',"华文行楷","Microsoft Yahei",arial,sans-serif;
+				font-weight: 100;
 				display: inline-block;
-				width: 80px;
-				height: 80px;
-				margin-right: 20px;
-				vertical-align: middle;
-				.border-radius(100%);
-				.transition(all, ease, 1s);
+				margin: auto;
+				.clearfix();
+				.author-info{
+					color: #fff;
+					float: right;
+					text-align: left;
+				}
+				a{
+					float: left;
+					text-decoration: none;
+				}
+				a:hover{
+					text-decoration: none;
+				}
+				.logo-img{
+					float: left;
+					display: inline-block;
+					width: 80px;
+					height: 80px;
+					margin-right: 20px;
+					vertical-align: middle;
+					.border-radius(100%);
+					.transition(all, ease, 1s);
+					&:hover{
+						.rotate(360deg);
+					}
+				}
+				.author-info{
+					margin-top: 3px;
+					.author{
+						padding: 5px 0;
+					}
+					.author-location{
+						font-size: 12px;
+					}	
+				}
 			}
-			.logo-img:hover{
-				.rotate(360deg);
-			}
-			.logo-name,
+			
+			/* .logo-name,
 			.logo-description,
 			.author-name,
 			.author-job,
 			.author-location{
 				display: inline-block;
 				color: #fff;
-			}
+			}  */
 		}
 	}
 	.outer{
@@ -183,7 +205,7 @@ a:hover{
 
 /* container */
 .container{
-	width: 980px;
+	max-width: 980px;
 	margin: 20px auto 40px;
 	.clearfix();
 	.wrap{

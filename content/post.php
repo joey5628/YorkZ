@@ -1,5 +1,4 @@
 <?php include('common/config.php'); ?>
-<?php include('db/db.class.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +8,6 @@
 	<?php $fed->addBaseCss(); ?>
 </head>
 <body>
-	<?php 
-		$db = new Db();
-		$terms = $db->getTerms();
-		print_r($terms);
-	?>
 	<header class="header">
 		<div class="inner">
 			<div class="base-info-outer">
@@ -30,21 +24,57 @@
 						</div>
 					</div>
 				</div>
+				<!-- <a href="/">
+					<img src="../img/sun.jpg" alt="" class="logo-img">
+					<h1 class="logo-name">YorkZ&nbsp;-&nbsp;专注前端开发和用户体验</h1>
+					<h3 class="author-job">前端工程师</h3>
+					<div class="author-location">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+						上海 - 松江
+					</div>
+				</a> -->
+				<!-- <a href="/">
+					<img src="../img/sun.jpg" alt="" class="logo-img">
+				
+					<h1 class="logo-name">YorkZ&nbsp;-</h1>
+					<h1 class="logo-description">专注前端开发和用户体验</h1>
+					<br>
+					<h2 class="author-name">岸林风</h2><br>
+					<h3 class="author-job">前端工程师</h3><br>
+					<div class="author-location">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+						上海 - 松江
+					</div>
+				</a> -->
+				<!-- <div class="base-info">
+					<a href="/">
+						<h1 class="logo-name">YorkZ&nbsp;-</h1>
+						<h1 class="logo-description">专注前端开发和用户体验</h1>
+					</a>
+					<h2 class="author-name">岸林风</h2>
+					<h3 class="author-job">前端工程师</h3>
+					<div class="author-location">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+						上海 - 松江
+					</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="outer">
 			<div class="inner navbar">
 				<ul class="nav nav-pills">
 					<li>
-						<a href="">首页<span>(<?php echo $terms['all']; ?>)</span></a>
+						<a href="">首页<span>(20)</span></a>
 					</li>
-					<?php foreach ($terms as $term):?>
-					<?php if( $term['group'] == '0'){ ?>
 					<li>
-						<a href="/yorkz/content/index.php?termid=<?php echo $term['id'];;?>"><?php echo $term['name']; ?><span>(<?php echo $term['count']; ?>)</span></a>
+						<a href="">前端开发<span>(10)</span></a>
 					</li>
-					<?php } ?>
-					<?php endforeach; ?>
+					<li>
+						<a href="">移动端开发<span>(8)</span></a>
+					</li>
+					<li>
+						<a href="">GIT<span>(2)</span></a>
+					</li>
 				</ul>
 				<div class="search-box">
 					<a id="linkSearch" href="javascript:;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
@@ -58,7 +88,6 @@
 	<div class="container">
 		<div class="wrap">
 			<section class="main">
-				<?php for($i = 0; $i < 10; $i++): ?>
 				<article class="article">
 					<header class="article-header">
 						<h1>
@@ -98,6 +127,9 @@
 							评论
 						</a>
 						<ul class="article-tag-link">
+							<!-- <li>
+								<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+							</li> -->
 							<li>
 								<a href="#">Javascript</a>
 							</li>
@@ -110,35 +142,6 @@
 						</ul>
 					</footer>
 				</article>
-				<?php endfor?>
-				<nav>
-					<ul class="pager">
-						<li>
-							<a href="#" class="prev">Prev</a>
-						</li>
-						<li>
-							<a href="">1</a>
-						</li>
-						<li class="current">
-							<a href="">2</a>
-						</li>
-						<li>
-							<a href="">3</a>
-						</li>
-						<li>
-							<a href="">4</a>
-						</li>
-						<li>
-							<span>...</span>
-						</li>
-						<li>
-							<a href="">30</a>
-						</li>
-						<li>
-							<a href="" class="next">Next</a>
-						</li>
-					</ul>
-				</nav>
 			</section>
 		</div>
 		<aside class="sidebar">
@@ -183,34 +186,44 @@
 			<div class="widget">
 				<h3 class="title">分类目录</h3>
 				<ul class="side-nav">
-					<?php foreach($terms as $term):
-						$hasChild = $term['hasChild']; 
-						$id = $term['id'];
-					?>
-					<?php if( $term['group'] == '0'){ ?>
 					<li>
 						<a href="">
-							<?php echo $term['name'];?>
-							<span class="count">(<?php echo $term['count'];?>)</span>
+							前端开发
+							<span class="count">(20)</span>
 						</a>
-						<?php if($hasChild == "1"){?>
-							<ul class="sub-nav">
-								<?php foreach($terms as $term): 
-									$group = $term['group'];
-									if($id == $group){
-								?>
-								<li>
-									<a href="">
-										<?php echo $term['name'];?>
-										<span>(<?php echo $term['count'];?>)</span>
-									</a>
-								</li>
-								<?php } endforeach; ?>
-							</ul>
-						<?php }?>
+						<ul class="sub-nav">
+							<li>
+								<a href="">
+									CSS
+									<span>(5)</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									JavaScript
+									<span>(5)</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									Html
+									<span>(5)</span>
+								</a>
+							</li>
+						</ul>
 					</li>
-					<?php } ?>	
-					<?php endforeach; ?>
+					<li>
+						<a href="">
+							移动端开发
+							<span class="count">(20)</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							GIT
+							<span class="count">(20)</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 			<!-- 分类 end -->
@@ -247,7 +260,20 @@
 			</div>
 		</div>
 	</footer>
-
+	<!-- <div class="site-header">
+		<div class="header-box">
+			<img src="../img/sun.jpg" alt="" class="header-pic">
+			<h1>
+				<a href="/">YorkZ</a>
+			</h1>
+		</div>
+	</div>
+	<div class="container">
+		container
+	</div>
+	<div class="site-footer">
+		footer
+	</div> -->
 	<?php $fed->addBaseJs(); ?>
 </body>
 </html>
