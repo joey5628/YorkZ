@@ -12,7 +12,27 @@
 	<?php 
 		$db = new Db();
 		$terms = $db->getTerms();
-		print_r($terms);
+		// print_r($terms);
+		// 归档中取每月的文章数
+		$months = $db->getCountByMonth();
+
+		// 取推荐阅读
+		$recommend = $db->getRecommedPosts();
+
+		$pageSize = 5;
+		$start = 0;
+		$total = 0;
+		$pageIndex = 1;
+		$totalPage = 1;
+		// 取文章总数
+		$total = $db->getPostCount();
+
+		// 分页计算
+		$start = ($pageIndex - 1) * $pageSize;
+		$totalPage = ceil($total / $pageSize);
+		// 取文章
+		$posts = $db->getPosts($start, $pageSize);
+
 	?>
 	<header class="header">
 		<div class="inner">
@@ -41,7 +61,7 @@
 					<?php foreach ($terms as $term):?>
 					<?php if( $term['group'] == '0'){ ?>
 					<li>
-						<a href="/yorkz/content/index.php?termid=<?php echo $term['id'];;?>"><?php echo $term['name']; ?><span>(<?php echo $term['count']; ?>)</span></a>
+						<a href="/yorkz/content/index.php?categories=<?php echo $term['id'];?>"><?php echo $term['name']; ?><span>(<?php echo $term['count']; ?>)</span></a>
 					</li>
 					<?php } ?>
 					<?php endforeach; ?>
@@ -58,36 +78,30 @@
 	<div class="container">
 		<div class="wrap">
 			<section class="main">
-				<?php for($i = 0; $i < 10; $i++): ?>
+				<?php foreach($posts as $post): ?>
 				<article class="article">
 					<header class="article-header">
 						<h1>
-							<a href="#" class="article-title">overflow-scrolling属性让IOS设备的滚动更流畅</a>
+							<a href="/yorkz/content/post.php?id=<?php echo $post['id'];?>" class="article-title"><?php echo $post['title'];?></a>
 						</h1>
 						<div class="article-meta">
 							<div class="article-date">
 								<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-								<a href="#"><time datetime="2015-04-21T08:20:17.000Z" itemprop="datePublished">2015-04-21</time></a>
+								<a href="/yorkz/content/index.php?archives=<?php echo $post['time'];?>">
+									<time datetime="<?php echo $post['create_date'];?>"><?php echo $post['time'];?></time>
+								</a>
 							</div>
 							<div class="article-category">
 								<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-								<a class="article-category-link" href="/categories/移动端开发/">移动端开发</a>
+								<a class="article-category-link" href="/yorkz/content/index.php?categories=<?php echo $post['term'];?>">
+									<?php echo $post['term_name'];?>
+								</a>
 							</div>
 						</div>
 					</header>
 					<div class="article-body" itemprop="articleBody">
-			        	<p>IOS系统的惯性滑动效果非常赞，但是一般我们对div加overflow-y:auto;后是不会出这个效果的，滑动的时候会感觉很生涩。</p>
-						<p>这时候如果想要我们自己的div有IOS独有的惯性滑动效果，可以有两个选择，一个就是用iscroll插件来模拟，不过现在有个更简单的方法，加个IOS独有的属性：</p>
-						<!-- <pre>
-							<code class="hljs css">
-								<span class="hljs-rule"><span class="hljs-attribute">-webkit-overflow-scrolling</span>:<span class="hljs-value"> touch</span></span>;
-							</code>
-						</pre> -->
-						<p>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling</a>
-							 可以查到此属性的具体文档，属性可以直接对body加或者对需要滑动的div加都可以。
-						</p>
-				    </div>
+						<?php echo $post['content'];?>
+					</div>
 					<footer class="article-footer">
 						<a href="#" class="article-share-link">
 							<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
@@ -110,10 +124,11 @@
 						</ul>
 					</footer>
 				</article>
-				<?php endfor?>
+				<?php endforeach; ?>
+
 				<nav>
 					<ul class="pager">
-						<li>
+						<li class="disabled">
 							<a href="#" class="prev">Prev</a>
 						</li>
 						<li>
@@ -142,39 +157,16 @@
 			</section>
 		</div>
 		<aside class="sidebar">
-			<!-- 打算移到头部
-			<div class="profile">
-				<div class="base-info">
-					<img src="../img/sun.jpg" alt="" class="logo-img">
-					<h2 class="author-name">岸林风</h2>
-					<h3 class="author-job">前端工程师</h3>
-					<div class="author-location">
-						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-						上海 - 松江
-					</div>
-				</div>
-				<div class="article-info">
-					
-				</div>
-				<div class="contact-info"></div>
-			</div>
-			 -->
 			<!-- 推荐阅读 start -->
 			<div class="widget">
 				<h3 class="title">推荐阅读</h3>
 				<ul class="side-nav">
+					<?php foreach($recommend as $row): ?>
 					<li>
-						<a href="">前端开发中合理选用图片格式</a>
-						<span class="date">2015/03/19</span>
+						<a href=""><?php echo $row['title'];?></a>
+						<span class="date"><?php echo $row['time'];?></span>
 					</li>
-					<li>
-						<a href="">自动化构建（二）：基于Gulp的代码部署环境</a>
-						<span class="date">2015/03/19</span>
-					</li>
-					<li>
-						<a href="">自动化构建（一）：团队开发中更好的控制代码质量和风格</a>
-						<span class="date">2015/03/19</span>
-					</li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 			<!-- 推荐月底 end -->
@@ -189,7 +181,7 @@
 					?>
 					<?php if( $term['group'] == '0'){ ?>
 					<li>
-						<a href="">
+						<a href="/yorkz/content/index.php?categories=<?php echo $id;?>">
 							<?php echo $term['name'];?>
 							<span class="count">(<?php echo $term['count'];?>)</span>
 						</a>
@@ -200,7 +192,7 @@
 									if($id == $group){
 								?>
 								<li>
-									<a href="">
+									<a href="/yorkz/content/index.php?categories=<?php echo $term['id'];?>">
 										<?php echo $term['name'];?>
 										<span>(<?php echo $term['count'];?>)</span>
 									</a>
@@ -219,12 +211,13 @@
 			<div class="widget">
 				<h3 class="title">文章归档</h3>
 				<ul class="side-nav">
-					<li><a href="">2015年5月<span class="count">(0)</span></a></li>
-					<li><a href="">2015年4月<span class="count">(19)</span></a></li>
-					<li><a href="">2015年3月<span class="count">(88)</span></a></li>
-					<li><a href="">2015年2月<span class="count">(8)</span></a></li>
-					<li><a href="">2015年1月<span class="count">(5)</span></a></li>
-					<li><a href="">2014年12月<span class="count">(1)</span></a></li>
+					<?php foreach ($months as $month): ?>
+					<li>
+						<a href="/yorkz/content/index.php?archives=<?php echo $month['year'] .'-'. $month['month'];?>">
+							<?php echo $month['year']; ?>年<?php echo $month['month']; ?>月<span class="count">(<?php echo $month['count']; ?>)</span>
+						</a>
+					</li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 			<!-- 归档 end -->

@@ -343,7 +343,8 @@ a:hover{
 			border: 1px solid #ddd;
 			// color: rgba(0, 167, 225, 0.6);
 			// color: #00a7e1;
-			color: #999;
+			//color: #999;
+			color: #337ab7;
 			background: #fff;
 			float: left;
 			margin: 0 3px;
@@ -369,10 +370,19 @@ a:hover{
 			color: #fff; 
 			cursor: not-allowed;
 		}
+		&.disabled a{
+			color: #999;
+		}
+		&.disabled a:hover,
+		&.disabled a:focus{
+			color: #999;
+			background: #fff;
+			cursor: not-allowed;
+		}
 	}
 }
 
-.profile{
+/* .profile{
 	background: #fff;	
 	.base-info{
 		text-align: center;
@@ -393,7 +403,7 @@ a:hover{
 			color: #999;
 		}
 	}
-}
+} */
 
 // sidebar widget li
 .widget{

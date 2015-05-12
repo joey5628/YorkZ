@@ -56,6 +56,7 @@ $(function(){
 			content: content,
 			display: $('#displayStatus').val(),
 			term: $('#postTerm').val(),
+			recommend: $('input[name="recommend"]:checked').val(),
 			tag: ''
 		};
 	}

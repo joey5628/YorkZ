@@ -65,6 +65,71 @@
 			}
 		}
 
+		// 获取每月的文章数
+		public function getCountByMonth(){
+			try{
+				$db = getDBConnect();
+				// 这个slq可以改写成用 date_format
+				$sql = "select year(create_date) as 'year', month(create_date) as 'month',count(id) as 'count' from posts group by month(create_date) order by create_date desc;";
+
+				$rs = $db->query($sql);
+				$rs->setFetchMode(PDO::FETCH_ASSOC);
+				$result = $rs->fetchAll();
+
+				return $result;
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+
+		// 获取推荐阅读
+		public function getRecommedPosts(){
+			try{
+				$db = getDBConnect();
+				//select p.*, date_format(p.create_date, '%Y-%m-%d') as time, t.term_name from posts p left join term t on p.term=t.id order by create_date desc
+				$sql = "select *, date_format(create_date,'%Y/%m/%d') as time from posts where recommend=1 order by create_date desc";
+
+				$rs = $db->query($sql);
+				$rs->setFetchMode(PDO::FETCH_ASSOC);
+				$result = $rs->fetchAll();
+
+				return $result;
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+
+		// 获取文章总数
+		public function getPostCount(){
+			try{
+				$db = getDBConnect();
+				$sql = "select * from posts where status='publish' and display=1;";
+
+				$rs = $db->query($sql);
+				$count = $rs->rowCount();
+
+				return $count;
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+
+		//获取文章
+		public function getPosts($start, $pageSize){
+			try{
+				$db = getDBConnect();
+				$sql = "select p.*, date_format(p.create_date, '%Y-%m-%d') as time, t.term_name from posts p left join term t on p.term=t.id where p.status='publish' and p.display=1 order by create_date desc limit $start, $pageSize;";
+
+				$rs = $db->query($sql);
+				$rs->setFetchMode(PDO::FETCH_ASSOC);
+				$result = $rs->fetchAll();
+
+				return $result;
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+
 	}
 
 ?>

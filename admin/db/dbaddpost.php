@@ -11,6 +11,7 @@
 	$display = $_POST['display'];
 	$term = $_POST['term'];
 	$tag = $_POST['tag'];
+	$recommend = $_POST['recommend'];
 	$status = $act;
 	date_default_timezone_set("Asia/Shanghai");
 	$time = date('Y-m-d H:i:s',time()); 
@@ -21,7 +22,7 @@
 			$db = getDBConnect();
         	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 			
-        	$sql = "update posts set modified=:modified, title=:title, content=:content, status=:status, display=:display, term=:term, tag=:tag where id=:id";  
+        	$sql = "update posts set modified=:modified, title=:title, content=:content, status=:status, display=:display, term=:term, tag=:tag, recommend=:recommend where id=:id";  
 	        $stmt = $db->prepare($sql);  
 	        $stmt->bindParam(":id", $id);  
 	        $stmt->bindParam(":modified", $time);   
@@ -31,6 +32,7 @@
 	        $stmt->bindParam(":display", $display); 
 	        $stmt->bindParam(":term", $term); 
 	        $stmt->bindParam(":tag", $tag); 
+	        $stmt->bindParam(":recommend", $recommend); 
 	        $result = $stmt->execute();  
 	        if($result){
 	        	$data = array(
@@ -55,10 +57,11 @@
 		try{
 			$db = getDBConnect();
 
-			$sql = "insert into posts (create_date, modified, title, content, status, display, term, tag) values ('$time', '$time', '$title', '$content', '$status', '$display', '$term', '$tag')";
+			$sql = "insert into posts (create_date, modified, title, content, status, display, term, tag, recommend) values ('$time', '$time', '$title', '$content', '$status', '$display', '$term', '$tag', '$recommend')";
+			echo $sql;
 			$db->exec($sql);
 			$id = $db->lastInsertId();
-
+			echo $id;
 			$data = array(
 				'ack'=>'success',
 				'id'=>$id

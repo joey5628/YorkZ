@@ -81,6 +81,15 @@
 										</select>
 									</div>
 									<div class="form-group">
+										<label for="postTerm">推荐阅读：</label>
+										<label class="radio-inline">
+										 	<input type="radio" name="recommend" id="recommend0" value="0" <?php echo $info != '' && $info['recommend'] == 0 ? 'checked="checked"' : ''?>>不推荐
+										</label>
+									 	<label class="radio-inline">
+										 	<input type="radio" name="recommend" id="recommend1" value="1" <?php echo $info != '' && $info['recommend'] == 1 ? 'checked="checked"' : ''?>>推荐
+										</label>
+									</div>
+									<div class="form-group">
 										<label for="postTag">添加标签：</label>
 										<div class="input-group">
 									     	<input type="text" class="form-control input-sm" placeholder="添加标签">								      
