@@ -5,6 +5,12 @@
 	<title>Document</title>
 </head>
 <body>
+	<?php 
+		$a = '1';
+		if($a){
+			echo "string";
+		}
+	?>
 	<a href="">zhangyi</a>
 </body>
 </html>

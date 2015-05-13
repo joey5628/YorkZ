@@ -10,6 +10,23 @@
 </head>
 <body>
 	<?php 
+		// 参数
+		$categories = '';
+		$pageIndex = 1;
+		$archives = '';		//归档
+
+		if($_GET){
+			if(isset($_GET['categories'])){
+				$categories = $_GET['categories'];
+			}
+			if(isset($_GET['page'])){
+				$pageIndex = intval($_GET['page']);
+			}
+			if(isset($_GET['archives'])){
+				$archives = $_GET['archives'];
+			}
+		}
+
 		$db = new Db();
 		$terms = $db->getTerms();
 		// print_r($terms);
@@ -22,16 +39,16 @@
 		$pageSize = 5;
 		$start = 0;
 		$total = 0;
-		$pageIndex = 1;
 		$totalPage = 1;
 		// 取文章总数
-		$total = $db->getPostCount();
-
+		$total = $db->getPostCount($categories);
+		echo "total--" . $total ."<br>";
 		// 分页计算
 		$start = ($pageIndex - 1) * $pageSize;
 		$totalPage = ceil($total / $pageSize);
+		echo "totalPage--" . $totalPage ."<br>";
 		// 取文章
-		$posts = $db->getPosts($start, $pageSize);
+		$posts = $db->getPosts($start, $pageSize, $categories);
 
 	?>
 	<header class="header">
@@ -56,7 +73,7 @@
 			<div class="inner navbar">
 				<ul class="nav nav-pills">
 					<li>
-						<a href="">首页<span>(<?php echo $terms['all']; ?>)</span></a>
+						<a href="/yorkz/content/index.php">首页<span>(<?php echo $terms['all']; ?>)</span></a>
 					</li>
 					<?php foreach ($terms as $term):?>
 					<?php if( $term['group'] == '0'){ ?>
@@ -125,35 +142,66 @@
 					</footer>
 				</article>
 				<?php endforeach; ?>
-
+					
+				<?php if($totalPage > 1){ ?>
 				<nav>
 					<ul class="pager">
-						<li class="disabled">
-							<a href="#" class="prev">Prev</a>
+						<?php 
+							$url = '/yorkz/content/index.php?';
+							if($categories){
+								$url .= 'categories=' . $categories .'&';
+							}
+							if($archives){
+								$url .= 'archives=' . $archives .'&';
+							}
+							$style = '';
+							$pageUrl = $url . 'page=' . $pageIndex - 1;
+							if($pageIndex == 1){
+								$style = 'class="disabled"';
+								$pageUrl = 'javascript:;';
+							}
+						?>
+						<li <?php echo $style;?>>
+							<a href="<?php echo $pageUrl;?>" class="prev">Prev</a>
 						</li>
-						<li>
-							<a href="">1</a>
+
+						<?php 
+							for ($i = 1; $i <= $totalPage; $i++) {
+								if($i < 5 || $i == $totalPage){
+									$style = '';
+									$pageUrl = $url . 'page=' . $i;
+									if($i == $pageIndex){
+										$style = ' class="current"';
+										$pageUrl = 'javascript:;';
+									}
+						?>
+						<li <?php echo $style;?>>
+							<a href="<?php echo $pageUrl;?>"><?php echo $i;?></a>
 						</li>
-						<li class="current">
-							<a href="">2</a>
-						</li>
-						<li>
-							<a href="">3</a>
-						</li>
-						<li>
-							<a href="">4</a>
-						</li>
+						<?php   
+								}else if($i == 5){
+						?>	
 						<li>
 							<span>...</span>
 						</li>
-						<li>
-							<a href="">30</a>
-						</li>
-						<li>
-							<a href="" class="next">Next</a>
+						<?php	
+								}
+							} 
+						?>
+						<?php 
+							$style = '';
+							$pageUrl = $url . 'page=' . ($pageIndex + 1); //pageIndex是从0开始的
+							if($pageIndex == $totalPage){
+								$style = ' class="disabled"';
+								$pageUrl = 'javascript:;';
+							}
+						?>
+						<li <?php echo $style;?>>
+							<a href="<?php echo $pageUrl;?>" class="next">Next</a>
 						</li>
 					</ul>
 				</nav>
+				<?php } ?>
 			</section>
 		</div>
 		<aside class="sidebar">
